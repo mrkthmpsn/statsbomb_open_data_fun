@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "statsbomb-data-science"
+version = "0.1.0"
+description = ""
+authors = ["Mark Thompson <41844090+mrkthmpsn@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+kloppy = "^3.15.0"
+ipython = "^8.30.0"
+matplotlib = "^3.9.3"
+pandas = "^2.2.3"
+statsbombpy = "^1.14.0"
+pydantic = "^2.10.3"
+tqdm = "^4.67.1"
+mplsoccer = "^1.4.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
