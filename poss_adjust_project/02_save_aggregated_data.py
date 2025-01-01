@@ -39,6 +39,7 @@ agg_def_events_df = (
     .reset_index()
 )
 
+# TODO: Add team ID here - didn't in the initial study in case it reduced the amount of qualifying players
 agg_presence_stats_df = (
     presence_stats_df[
         [
@@ -53,6 +54,7 @@ agg_presence_stats_df = (
     .sum()
     .reset_index(drop=False)
 )
+# TODO: Move the mins_played to the analysis
 agg_presence_stats_df = agg_presence_stats_df[
     (agg_presence_stats_df["mins_played"] >= 450)
     & (agg_presence_stats_df["general_position"] != "NA")
