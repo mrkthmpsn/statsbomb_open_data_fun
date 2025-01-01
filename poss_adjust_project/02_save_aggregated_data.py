@@ -2,6 +2,11 @@
 File to save aggregated defensive action and possession share data
 """
 
+import pandas as pd
+
+from sb_data_pipeline.dataclasses import StatsbombPlayerPosition
+from sb_data_pipeline.temp_utils import load_player_presence_stats_df
+
 # Load in data
 def_events_df = pd.read_csv("./poss_adjust_project/data/def_events.csv")
 player_df = pd.read_csv("./data/statsbomb_players.csv")
