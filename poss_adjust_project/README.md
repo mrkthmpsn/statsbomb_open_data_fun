@@ -2,6 +2,27 @@
 
 _In many cases, possession is not nine-tenths of the law_
 
+## Project structure
+
+There are two data-gathering files in this project (which build off data-gathering processes in the `sb_data_pipeline` folder). There is then a markdown file exploring the aggregated data with some basic correlation analysis and commentary.
+
+The final aggregated data, which is used in `data_exploration.md` is saved in the `data` folder - other pieces of data are reproducible using the code in the rest of the repo.
+
+## Data used
+
+- Statsbomb openly-available event data
+- 2015/16 seasons in the English Premier League, French Ligue 1, German Bundesliga, Italian Serie A, and Spanish La Liga
+
+This repo contains a CSV of the aggregated data which is used directly for the results in `data_exploration.md`, though not each complete stage of data. That data is reproducible through the code files, however.
+
+## Data gathering process
+
+The basic dataset comes from 'player presence statistics' - i.e. stats that happen while a player is on-field. (The process for gathering this is described in `sb_data_pipeline/README.md`).
+
+This provides the information for the possession percentage for a player's team while they're on the pitch, as well as their position during the match (more on both of these in 'Commentary').
+
+It's then straightforward to fetch defensive action events from the Statsbomb event data, which is saved as `./poss_adjust_project/def_events.csv`.
+
 ## Takeaways
 
 Reassuringly for myself, the takeaways reflect the [previous work I did on the subject at the start of the decade](https://www.getgoalsideanalytics.com/duels-position-possession-adjusting/). There are essentially three strands to this:
@@ -32,21 +53,6 @@ Summary: Clearances generally have the strongest negative correlation with posse
 Technical: The standard deviation of correlations for defensive action type was around 0.05 for each group (6 of 10 falling between 0.04 and 0.06). This relatively small standard deviation has to be compared to the average correlation for defensive action types, which usually (in 7 of 10 cases) wasn't larger than +-0.19.
 
 Clearances had the strongest negative correlation for 7 of 10 positions, although for Center Backs and Defensive Midfielders it was the _only_ negative correlation. (There is little point noting this, given the relatively small sample sizes and the absolutely small correlation strengths, but the position groups which are most associated with defending, Center Backs and Defensive Midfielders, actually have a _positive_ correlation between defensive action numbers and possession share in this sample).
-
-## Data used
-
-- Statsbomb openly-available event data
-- 2015/16 seasons in the English Premier League, French Ligue 1, German Bundesliga, Italian Serie A, and Spanish La Liga
-
-This repo contains a CSV of the aggregated data which is used directly for the results in `data_exploration.md`, though not each complete stage of data. That data is reproducible through the code files, however.
-
-## Data gathering process
-
-The basic dataset comes from 'player presence statistics' - i.e. stats that happen while a player is on-field. (The process for gathering this is described in `sb_data_pipeline/README.md`).
-
-This provides the information for the possession percentage for a player's team while they're on the pitch, as well as their position during the match (more on both of these in 'Commentary').
-
-It's then straightforward to fetch defensive action events from the Statsbomb event data, which is saved as `./poss_adjust_project/def_events.csv`.
 
 ## Commentary
 
