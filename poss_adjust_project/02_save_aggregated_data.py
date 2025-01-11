@@ -29,12 +29,25 @@ presence_stats_df["position_group"] = presence_stats_df["position"].map(
     position_group_mapping
 )
 
+# Need to merge the presence data here to get the general position
+presence_stats_df["player_id"] = presence_stats_df["player_id"].astype(int)
+presence_stats_df["team_id"] = presence_stats_df["team_id"].astype(int)
+presence_stats_df["match_id"] = presence_stats_df["match_id"].astype(float).astype(int)
+def_events_df = def_events_df.merge(
+    presence_stats_df[["match_id", "player_id", "team_id", "general_position"]]
+)
+
+
 # Aggregate the data
 agg_def_events_df = (
-    def_events_df.groupby(["player_id", "event_type"]).count()["event_id"].reset_index()
+    def_events_df.groupby(["player_id", "general_position", "event_type"])
+    .count()["event_id"]
+    .reset_index()
 )
 agg_def_events_df = (
-    agg_def_events_df.pivot(index="player_id", columns="event_type", values="event_id")
+    agg_def_events_df.pivot(
+        index=["player_id", "general_position"], columns="event_type", values="event_id"
+    )
     .fillna(0)
     .reset_index()
 )

@@ -1,5 +1,7 @@
 # Exploring the data of team possession share and player defensive output in the 2015/16 'Big Five' men's European leagues
 
+Note: This write-up was updated on 11 January with a correction to an error in the code. General trends were unaffected, but some of the particularly unusual findings didn't hold up in the updated results data.
+
 ## Results
 
 The table below shows the data which the `Code` section produces. Left-to-right, the columns represent:
@@ -11,16 +13,16 @@ The table below shows the data which the `Code` section produces. Left-to-right,
 
 |     | general_position     | count | clear_90 | tack_90 | block_90 | drib_past_90 | interc_90 | pressure_90 | corr_stdev | corr_mean |
 | --: | :------------------- | ----: | -------: | ------: | -------: | -----------: | --------: | ----------: | ---------: | --------: |
-|   0 | Attacking Midfielder |    57 |   -0.345 |   -0.22 |   -0.282 |       -0.216 |    -0.296 |      -0.228 |      0.052 |    -0.265 |
-|   1 | Center Back          |   381 |   -0.118 |   0.132 |    0.087 |        0.144 |      0.12 |       0.104 |      0.098 |     0.078 |
-|   2 | Center Forward       |   197 |    -0.19 |  -0.185 |    -0.27 |       -0.126 |     -0.13 |      -0.214 |      0.054 |    -0.186 |
-|   3 | Center Midfielder    |   148 |   -0.253 |  -0.118 |    -0.19 |        -0.09 |    -0.186 |       -0.16 |      0.058 |    -0.166 |
-|   4 | Defensive Midfielder |   302 |   -0.034 |   0.081 |    0.037 |        0.099 |     0.054 |       0.032 |      0.046 |     0.045 |
-|   5 | Full Back            |   361 |    -0.19 |  -0.067 |   -0.101 |        -0.03 |    -0.071 |      -0.066 |      0.055 |    -0.087 |
-|   6 | Goalkeeper           |   142 |    0.017 |  -0.018 |   -0.042 |       -0.223 |     0.004 |       -0.11 |      0.091 |    -0.062 |
-|   7 | Wide Midfielder      |    90 |   -0.205 |   -0.17 |   -0.103 |       -0.183 |    -0.203 |       -0.13 |      0.041 |    -0.166 |
-|   8 | Wing Back            |    31 |   -0.418 |  -0.407 |   -0.327 |       -0.379 |     -0.38 |      -0.382 |      0.032 |    -0.382 |
-|   9 | Winger               |   136 |   -0.355 |  -0.339 |   -0.365 |       -0.297 |    -0.309 |      -0.386 |      0.034 |    -0.342 |
+|   0 | Attacking Midfielder |    57 |   -0.227 |  -0.208 |   -0.415 |       -0.172 |    -0.228 |      -0.251 |      0.085 |     -0.25 |
+|   1 | Center Back          |   381 |   -0.359 |  -0.003 |   -0.165 |        0.025 |     0.043 |      -0.134 |      0.154 |    -0.099 |
+|   2 | Center Forward       |   197 |   -0.133 |  -0.111 |   -0.296 |       -0.009 |    -0.101 |      -0.242 |      0.104 |    -0.149 |
+|   3 | Center Midfielder    |   148 |   -0.355 |  -0.082 |   -0.301 |       -0.111 |    -0.172 |      -0.272 |       0.11 |    -0.216 |
+|   4 | Defensive Midfielder |   302 |    -0.21 |  -0.069 |   -0.167 |       -0.062 |    -0.087 |      -0.206 |      0.069 |    -0.134 |
+|   5 | Full Back            |   361 |   -0.327 |  -0.129 |   -0.191 |        -0.08 |    -0.083 |      -0.169 |      0.092 |    -0.163 |
+|   6 | Goalkeeper           |   142 |    0.016 |  -0.012 |   -0.044 |       -0.222 |     0.004 |      -0.144 |      0.095 |    -0.067 |
+|   7 | Wide Midfielder      |    90 |   -0.314 |  -0.249 |   -0.189 |       -0.214 |    -0.286 |      -0.394 |      0.074 |    -0.274 |
+|   8 | Wing Back            |    31 |   -0.323 |  -0.233 |   -0.016 |       -0.051 |    -0.376 |       -0.18 |      0.144 |    -0.197 |
+|   9 | Winger               |   136 |   -0.307 |  -0.312 |   -0.268 |       -0.225 |    -0.319 |      -0.377 |      0.051 |    -0.301 |
 
 ### A note on positions and minutes
 
@@ -32,19 +34,19 @@ The minutes played are 'full' minutes, rather than 'capped' (see a [recent piece
 
 ### Commentary
 
-#### Weak, mostly negative correlations
+#### Weak, generally negative correlations
 
 Although the general tendency is for a higher possession share to be linked with a lower defensive action output, the correlations are generally very weak.
 
-The (very weak, barely present) positive correlations for Center Back and Defensive Midfielder categories are notable. Even if they don't indicate that higher possession share is linked with _higher_ defensive action output, they're notable for how clearly they show the _lack_ of link between the two variables.
+#### Block and clearance link strength
+
+The defensive actions most strongly linked to possession share appear to be clearances and blocked shots. This would make sense when possession is viewed through its link to team quality.
 
 #### Wide, attacking positions
 
-The strongest correlations come in the Winger and Wing Back positions (although the sample of players who meet the minutes threshold for Wing Back is very small).
+The strongest correlations come in the Wide Midfielder and Winger positions. Attacking Midfielder group is relatively close behind, although the gap is slightly larger when excluding clearances and blocks from consideration (focusing on more 'open-field' defensive action types).
 
-However, this may be a symptom of the role requirements differing within the same position based on team strength (which is often linked to possession share). For example, wingers in a weaker team will often spend more time 'in the midfield line' than 'in the forward line' when out of possession, as the team is pushed into a deeper block.
-
-That all said, if the suspicion that stronger correlations for the 'Winger' position is a symptom of team strength differences, this raises interesting philosophical questions about the extent that 'role' assignations can be made independently from team strength.
+This comparison to the weaker correlation strengths for Center Back and Defensive Midfielder groups, the ones considered most 'defensive', is particularly notable.
 
 #### Defensive vs Center Midfield
 
@@ -99,6 +101,10 @@ grouped_correlations["corr_stdev"] = grouped_correlations.apply(
 )
 grouped_correlations["corr_mean"] = grouped_correlations.apply(
     lambda row: statistics.mean([row[action] for action in corr_action_col_names]),
+    axis=1,
+)
+grouped_correlations["open_field_corr_mean"] = grouped_correlations.apply(
+    lambda row: statistics.mean([row[action] for action in ['tack_90', 'drib_past_90', 'interc_90', 'pressure_90']]),
     axis=1,
 )
 
