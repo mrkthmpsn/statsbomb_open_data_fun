@@ -4,16 +4,16 @@ _In many cases, possession is not nine-tenths of the law_
 
 ## Project structure
 
-There are two data-gathering files in this project (which build off data-gathering processes in the `sb_data_pipeline` folder). There is then a markdown file exploring the aggregated data with some basic correlation analysis and commentary.
+There are three data-gathering files in this project (which build off data-gathering processes in the `sb_data_pipeline` folder). There are then two markdown files exploring the aggregated data with some basic correlation analysis and commentary.
 
-The final aggregated data, which is used in `data_exploration.md` is saved in the `data` folder - other pieces of data are reproducible using the code in the rest of the repo.
+The final aggregated data, used the markdown investigation files, are saved in the `data` folder - other pieces of data are reproducible using the code in the rest of the repo.
 
 ## Data used
 
 - Statsbomb openly-available event data
 - 2015/16 seasons in the English Premier League, French Ligue 1, German Bundesliga, Italian Serie A, and Spanish La Liga
 
-This repo contains a CSV of the aggregated data which is used directly for the results in `data_exploration.md`, though not each complete stage of data. That data is reproducible through the code files, however.
+This repo contains CSVs of the aggregated data which are used directly for the results in `data_exploration.md` and `data_exploration_pt2.md`, though not each complete stage of data. That data is reproducible through the code files, however.
 
 ## Data gathering process
 
@@ -25,34 +25,16 @@ It's then straightforward to fetch defensive action events from the Statsbomb ev
 
 ## Takeaways
 
-Reassuringly for myself, the takeaways reflect the [previous work I did on the subject at the start of the decade](https://www.getgoalsideanalytics.com/duels-position-possession-adjusting/). There are essentially three strands to this:
+Note: This project and its initial investigation was updated on 11 January with a correction to an error in the code. General trends were unaffected, but some of the particularly unusual findings didn't hold up in the updated results data.
+
+Reassuringly for myself, the takeaways generally reflect the [previous work I did on the subject at the start of the decade](https://www.getgoalsideanalytics.com/duels-position-possession-adjusting/). There are a few strands to this:
 
 1. The effects of possession share on defensive action numbers are so small as to be non-existent
 2. The effects of possession share vary depending on player position
-3. The effects of possession share vary (slightly less) depending on defensive action type
+3. The effects of possession share also vary depending on defensive action type
+4. The amount of possession sequences does not seem to be strongly linked to the defensive output
 
-A few words can be found on these below, and results can be found in `data_exploration.md`.
-
-**Effect of possession share on defensive action numbers are tiny (in this sample, at least)**
-Summary: The correlation strengths are not really 'strengths' as much as 'presences'. There's generally no relationship between the amount of possession a player's team has and the amount of defensive actions they make. This is important, because 'players on teams with lower possession naturally make more defensive actions' is the fundamental premise of possession-adjusting player stats.
-
-Technical: No correlation between the possession percentage of a player's team while they were on the pitch compared to their average defensive action statistics per 90 minutes reached a level of +-0.42. In most positions, they rarely reached a level of +-0.2.
-
-**Different effects for different player positions**
-Summary: Wide attackers seem to be affected most by possession, while the effects on defensive midfielders are the least.
-
-Technical: The effects on Wing Back and Winger positions is curiously large in comparison with others. Each defensive action has a correlation stronger than -0.29 (all negative), with most stronger than -0.35. In other positions, only clearances for Attacking Midfielders has a correlation strength stronger than the -0.29 that represents the weakest correlation in the 'Wing Back-plus-Winger' set.
-
-For Defensive Midfielders, no correlation is stronger than +-0.1, something almost shared by Full Backs (where there is, though, a stronger correlation among clearances (-0.19)). Defensive Midfielders, however, share a trait with Center Backs - positive correlations for some defensive action types (although still very, very weak ones).
-
-Attacking Midfielders and Center Forwards form a halfway house between the Defensive Midfielders and Wing-Back/Winger groups. Generally, the correlations are between -0.1 and -0.25 in strength.
-
-**Different effects for different defensive action types**
-Summary: Clearances generally have the strongest negative correlation with possession (though still not a _strong_ correlation).
-
-Technical: The standard deviation of correlations for defensive action type was around 0.05 for each group (6 of 10 falling between 0.04 and 0.06). This relatively small standard deviation has to be compared to the average correlation for defensive action types, which usually (in 7 of 10 cases) wasn't larger than +-0.19.
-
-Clearances had the strongest negative correlation for 7 of 10 positions, although for Center Backs and Defensive Midfielders it was the _only_ negative correlation. (There is little point noting this, given the relatively small sample sizes and the absolutely small correlation strengths, but the position groups which are most associated with defending, Center Backs and Defensive Midfielders, actually have a _positive_ correlation between defensive action numbers and possession share in this sample).
+Results and commentary can be found in `data_exploration.md` and `data_exploration_pt2.md`.
 
 ## Commentary
 
@@ -65,6 +47,8 @@ The fundamental justification for this is the idea that players on teams without
 However, if this were all the case, one would expect that possession share would be strongly correlated with the number of defensive actions that are made. This study has found that, when players are split by position, their defensive action numbers _do not_ have a strong correlation with possession share.
 
 I don't want to completely disregard possession adjusting off the back of a very simple correlation analysis: it may be that the low correlation between possession share and defensive output is actually an offset of the quality gap between defensive players on high- and low-possession teams. In other words, perhaps there would be a link between defensive output and possession share _among players of similar quality_, but that this sample is obscured by the fact that (presumably) better defensive players are on high-possession teams and worse defensive players are on low-possession teams. This may be a case of finding steelmen in a field of scarecrows, but it is worth noting as a possibility.
+
+There is another way to approach this theory, that high-turnover football might produce players with higher defensive output figures. Within this sample, this does not appear to be the case either. This appears surprising, given that the theory seems straightforward, but team style may be a confounding factor - high turnover football can appear in multiple ways (tackles in midfield, clearances from long balls), so perhaps this cancels out general trends.
 
 ### kloppy-Statsbomb event navigation
 
